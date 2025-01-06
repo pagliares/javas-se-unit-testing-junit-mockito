@@ -1,1 +1,1 @@
-# javas-se-unit-testing-junit-mockito
+# Java SE unit testing with JUnit and Mockito
