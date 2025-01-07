@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>CalculatorMavenProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Two ways to add support to JUnit Jupiter:
+        1 - Manually include the dependencies (junit-jupiter-api, junit-jupiter-engine, junit-jupiter-params)
+        2 - Include the Agregattor dependency (-->
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- <dependency>-->
+        <!--    <groupId>org.junit.jupiter</groupId>-->
+        <!--    <artifactId>junit-jupiter-api</artifactId>-->
+        <!--    <version>5.11.4</version>-->
+        <!--    <scope>test</scope>-->
+        <!--  </dependency>-->
+
+        <!--  <dependency>-->
+        <!--     <groupId>org.junit.jupiter</groupId>-->
+        <!--     <artifactId>junit-jupiter-engine</artifactId>-->
+        <!--     <version>5.11.4</version>-->
+        <!--     <scope>test</scope>-->
+        <!--  </dependency>-->
+
+        <!--  Optional, but it will be used in some demonstration throughout the course &ndash;&gt;-->
+        <!--  <dependency>-->
+        <!--      <groupId>org.junit.jupiter</groupId>-->
+        <!--      <artifactId>junit-jupiter-params</artifactId>-->
+        <!--      <version>5.11.4</version>-->
+        <!--      <scope>test</scope>-->
+        <!--  </dependency>-->
+
+    </dependencies>
+
+    <!--  In order to include junit test in the build Lifecycle, we need to include the surefire plugin
+          https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
