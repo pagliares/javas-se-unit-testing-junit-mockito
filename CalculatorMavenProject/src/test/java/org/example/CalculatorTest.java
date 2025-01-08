@@ -13,20 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorTest {
 
     @Test
-    void testDivide_WhenFifteenIsDividedByThree_ShouldReturnFive(){
+    void testPerformIntegerDivision_WhenFifteenIsDividedByThree_ShouldReturnFive(){
         Calculator calculator = new Calculator();
-        int result = calculator.divide(15, 3);
+        int result = calculator.performIntegerDivision(15, 3);
         assertEquals(5, result, "15 divided by 3 did not return 5");
     }
 
     @Test
-    void testSubtraction_withPositiveNumbers_returnsCorrectDifference(){
+    void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(){
         Calculator calculator = new Calculator();
         int minuend = 5;
         int subtrahend = 3;
         int expectedResult = 2;
 
-        int result = calculator.subtract(minuend, subtrahend);
+        int result = calculator.performIntegerSubtraction(minuend, subtrahend);
 
         /*
             Instead of using:
