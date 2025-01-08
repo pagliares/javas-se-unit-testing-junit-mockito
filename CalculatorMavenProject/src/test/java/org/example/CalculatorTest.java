@@ -17,14 +17,29 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
         int result = calculator.divide(15, 3);
         assertEquals(5, result, "15 divided by 3 did not return 3");
-
     }
 
     @Test
     void testSubtraction_withPositiveNumbers_returnsCorrectDifference(){
         Calculator calculator = new Calculator();
-        int result = calculator.subtract(5, 3);
-        assertEquals(2, result, "5 subtracted by 3 did not return 2");
+        int minuend = 5;
+        int subtrahend = 3;
+        int expectedResult = 2;
+
+        int result = calculator.subtract(minuend, subtrahend);
+
+        /*
+            Instead of using:
+
+            assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
+
+            I prefer using  lambda expression that has better performance, since this third parameter
+            is executed ONLY when the test fail:
+
+            assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
+
+        */
+        assertEquals(expectedResult, result, () -> minuend + "-" + subtrahend + " did not return " + expectedResult);
 
     }
 
