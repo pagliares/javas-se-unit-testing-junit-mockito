@@ -16,7 +16,7 @@ class CalculatorTest {
     void testDivision_withPositiveNumbers_returnsCorrectQuotient(){
         Calculator calculator = new Calculator();
         int result = calculator.divide(15, 3);
-        assertEquals(5, result);
+        assertEquals(5, result, "15 divided by 3 did not return 3");
 
     }
 }
