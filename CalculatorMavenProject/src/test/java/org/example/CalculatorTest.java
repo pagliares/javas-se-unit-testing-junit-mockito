@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,9 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * test[Method]_[Condition]_[ExpectedBehavior]
  * .
  */
+@DisplayName("Report with results of testing calculator mathematical operations")
 class CalculatorTest {
 
     @Test
+    @DisplayName("Test 15/3 = 5")
     void testPerformIntegerDivision_WhenFifteenIsDividedByThree_ShouldReturnFive(){
         Calculator calculator = new Calculator();
         int result = calculator.performIntegerDivision(15, 3);
@@ -20,6 +23,7 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("Test 5-3 = 2")
     void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(){
         Calculator calculator = new Calculator();
         int minuend = 5;
