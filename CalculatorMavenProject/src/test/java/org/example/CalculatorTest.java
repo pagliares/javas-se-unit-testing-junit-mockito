@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorTest {
 
     @Test
-    void testDivision_withPositiveNumbers_returnsCorrectQuotient(){
+    void testDivide_WhenFifteenIsDividedByThree_ShouldReturnFive(){
         Calculator calculator = new Calculator();
         int result = calculator.divide(15, 3);
-        assertEquals(5, result, "15 divided by 3 did not return 3");
+        assertEquals(5, result, "15 divided by 3 did not return 5");
     }
 
     @Test
