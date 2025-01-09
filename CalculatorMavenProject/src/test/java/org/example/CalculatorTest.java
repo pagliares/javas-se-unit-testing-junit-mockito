@@ -17,8 +17,20 @@ class CalculatorTest {
     @Test
     @DisplayName("Test 15/3 = 5")
     void testPerformIntegerDivision_WhenFifteenIsDividedByThree_ShouldReturnFive(){
+        // Two widely used code structure schemas to implement the tests:
+        //   1. Arrange - Act - Assert (AAA)
+        //   2. Given - When - Then (Gherkin Syntax)
+
+        // Arrange (Given)
         Calculator calculator = new Calculator();
+        int dividend = 15;
+        int divisor = 3;
+        int expectedResult = 5;
+
+        // Act (When)
         int result = calculator.performIntegerDivision(15, 3);
+
+        // Assert (Then)
         assertEquals(5, result, "15 divided by 3 did not return 5");
     }
 
