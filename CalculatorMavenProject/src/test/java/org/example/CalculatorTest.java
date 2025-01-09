@@ -1,7 +1,6 @@
 package org.example;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +13,31 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Report with results of testing calculator mathematical operations")
 class CalculatorTest {
 
+    private Calculator calculator;
+
+    @BeforeAll
+    // The method to be executed before all others must be static!
+    static void setUp() {
+        System.out.println("Executing setup method annotated with @BeforeAll");
+    }
+
+    @AfterAll
+    // The method to be executed after all others must be static!
+    static void cleanUp() {
+        System.out.println("Executing cleanUp method annotated with @AfterAll");
+    }
+
+    @BeforeEach
+    void beforeEachTestMethod() {
+        calculator = new Calculator();
+        System.out.println("Executing beforeEachTestMethod annotated with @BeforeEach");
+    }
+
+    @AfterEach
+    void afterEachTestMethod() {
+        System.out.println("Executing afterEachTestMethod annotated with @AfterEach");
+    }
+
     @Test
     @DisplayName("Test 15/3 = 5")
     void testPerformIntegerDivision_WhenFifteenIsDividedByThree_ShouldReturnFive(){
@@ -22,7 +46,6 @@ class CalculatorTest {
         //   2. Given - When - Then (Gherkin Syntax)
 
         // Arrange (Given)
-        Calculator calculator = new Calculator();
         int dividend = 15;
         int divisor = 3;
         int expectedResult = 5;
