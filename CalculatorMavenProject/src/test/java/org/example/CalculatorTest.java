@@ -57,6 +57,19 @@ class CalculatorTest {
         assertEquals(5, result, "15 divided by 3 did not return 5");
     }
 
+    // Better disable than comment out the line with @Test since, disable still appears
+    // In the test results
+    @Disabled
+    @DisplayName("4/0 - To be implemented")
+    @Test
+    void testPerformIntegerDivision_When_FourIsDividedByZero_ShouldThrowArithmeticException(){
+        System.out.println("Test 4/0");
+        int dividend = 4;
+        int divisor = 0;
+        int expectedResult = 0;
+        fail("TODO: Not yet implemented");
+    }
+
     @Test
     @DisplayName("Test 5-3 = 2")
     void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(){
