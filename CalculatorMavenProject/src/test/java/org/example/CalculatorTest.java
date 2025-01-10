@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
@@ -88,7 +89,21 @@ class CalculatorTest {
     @ParameterizedTest
     // If the name of the test case is equal the name of the static method that provide the
     // arguments (source of input parameters), we can remove this name provided as parameter
-    @MethodSource("integerSubtractionInputParameters")
+    // @MethodSource("integerSubtractionInputParameters")
+    @CsvSource({
+                "5, 3, 2",
+                "2, 3, -1",
+                "1, 1, 0"
+    })
+
+    // How to use CsvSource with string arguments:
+    // Example (notice the second pair uses an empty String representing an empty argument
+    // @CsvSource({
+    //        "Brasília, New York",
+    //        "Paris, ''",
+    // })
+
+
     @DisplayName("Test integer subtraction [minuend, subtrahend, expectedResult]")
     void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(int minuend, int subtrahend, int expectedResult){
         // Usually we don’t use System.out.println statements in Test cases.
@@ -113,12 +128,12 @@ class CalculatorTest {
 
     }
 
-    private static Stream<Arguments> integerSubtractionInputParameters() {
-        return Stream.of(
-                Arguments.of(5, 3, 2),
-                Arguments.of(2, 3, -1),
-                Arguments.of(1, 1, 0)
-        );
-    }
+//    private static Stream<Arguments> integerSubtractionInputParameters() {
+//        return Stream.of(
+//                Arguments.of(5, 3, 2),
+//                Arguments.of(2, 3, -1),
+//                Arguments.of(1, 1, 0)
+//        );
+//    }
 
 }
