@@ -1,7 +1,10 @@
 package org.example;
 
 import org.junit.jupiter.api.*;
-import org.w3c.dom.ls.LSOutput;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,13 +85,16 @@ class CalculatorTest {
         assertEquals(expectedExceptionMessage, actualException.getMessage(), ()-> "Unexpected exception message");
     }
 
-    @Test
-    @DisplayName("Test 5-3 = 2")
-    void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(){
+    @ParameterizedTest
+    // If the name of the test case is equal the name of the static method that provide the
+    // arguments (source of input parameters), we can remove this name provided as parameter
+    @MethodSource("integerSubtractionInputParameters")
+    @DisplayName("Test integer subtraction [minuend, subtrahend, expectedResult]")
+    void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(int minuend, int subtrahend, int expectedResult){
+        // Usually we don’t use System.out.println statements in Test cases.
+        // In this and previous examples I used only for pedagogical reasons
+        System.out.println("Running test " + minuend + " - " + subtrahend + "= " + expectedResult);
         Calculator calculator = new Calculator();
-        int minuend = 5;
-        int subtrahend = 3;
-        int expectedResult = 2;
 
         int result = calculator.performIntegerSubtraction(minuend, subtrahend);
 
@@ -105,6 +111,14 @@ class CalculatorTest {
         */
         assertEquals(expectedResult, result, () -> minuend + "-" + subtrahend + " did not return " + expectedResult);
 
+    }
+
+    private static Stream<Arguments> integerSubtractionInputParameters() {
+        return Stream.of(
+                Arguments.of(5, 3, 2),
+                Arguments.of(2, 3, -1),
+                Arguments.of(1, 1, 0)
+        );
     }
 
 }
