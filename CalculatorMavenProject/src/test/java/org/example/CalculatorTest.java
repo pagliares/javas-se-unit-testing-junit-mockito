@@ -2,10 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
+
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,6 +95,14 @@ class CalculatorTest {
     //            "1, 1, 0"
     //})
 
+    //    private static Stream<Arguments> integerSubtractionInputParameters() {
+    //        return Stream.of(
+    //                Arguments.of(5, 3, 2),
+    //                Arguments.of(2, 3, -1),
+    //                Arguments.of(1, 1, 0)
+    //        );
+    //    }
+
     // How to use CsvSource with string arguments:
     // Example (notice the second pair uses an empty String representing an empty argument
     // @CsvSource({
@@ -104,11 +110,28 @@ class CalculatorTest {
     //        "Paris, ''",
     // })
 
+    // Below an example of how to use  @ParameterizedTest with @ValueSource annotation
+    //    @ParameterizedTest
+    //    @ValueSource(strings={"Tibet, Athens, Rome"})
+    //    void demonstrateValueSource(String firstName){
+    //        System.out.println(firstName);
+    //        assertNotNull(firstName);
+    //    }
+
     //  Remember:   The ExpectedBehavior in the convention of method names
     //  test[Method]_[Condition]_[ExpectedBehavior]
     //  can be helpful, but it's not always necessary,
     //  especially when the method name or the context already makes the expected behavior clear.
     //  This test case is an example
+
+    /*
+        Instead of using:
+        assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
+
+        I prefer using  lambda expression that has better performance, since this third parameter
+        is executed ONLY when the test fail:
+        assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
+     */
 
     @CsvFileSource(resources = "/inputParametersPerformIntegerSubtraction.csv")
     @DisplayName("Test integer subtraction [minuend, subtrahend, expectedResult]")
@@ -119,28 +142,6 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
 
         int result = calculator.performIntegerSubtraction(minuend, subtrahend);
-
-        /*
-            Instead of using:
-
-            assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
-
-            I prefer using  lambda expression that has better performance, since this third parameter
-            is executed ONLY when the test fail:
-
-            assertEquals(expectedResult, result, minuend + " " + subtrahend + " did not return " + expectedResult);
-
-        */
         assertEquals(expectedResult, result, () -> minuend + "-" + subtrahend + " did not return " + expectedResult);
-
     }
-
-//    private static Stream<Arguments> integerSubtractionInputParameters() {
-//        return Stream.of(
-//                Arguments.of(5, 3, 2),
-//                Arguments.of(2, 3, -1),
-//                Arguments.of(1, 1, 0)
-//        );
-//    }
-
 }
