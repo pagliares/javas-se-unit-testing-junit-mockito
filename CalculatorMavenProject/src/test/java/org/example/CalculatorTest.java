@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
@@ -90,11 +91,11 @@ class CalculatorTest {
     // If the name of the test case is equal the name of the static method that provide the
     // arguments (source of input parameters), we can remove this name provided as parameter
     // @MethodSource("integerSubtractionInputParameters")
-    @CsvSource({
-                "5, 3, 2",
-                "2, 3, -1",
-                "1, 1, 0"
-    })
+    // @CsvSource({
+    //             "5, 3, 2",
+    //            "2, 3, -1",
+    //            "1, 1, 0"
+    //})
 
     // How to use CsvSource with string arguments:
     // Example (notice the second pair uses an empty String representing an empty argument
@@ -103,9 +104,15 @@ class CalculatorTest {
     //        "Paris, ''",
     // })
 
+    //  Remember:   The ExpectedBehavior in the convention of method names
+    //  test[Method]_[Condition]_[ExpectedBehavior]
+    //  can be helpful, but it's not always necessary,
+    //  especially when the method name or the context already makes the expected behavior clear.
+    //  This test case is an example
 
+    @CsvFileSource(resources = "/inputParametersPerformIntegerSubtraction.csv")
     @DisplayName("Test integer subtraction [minuend, subtrahend, expectedResult]")
-    void testPerformIntegerSubtraction_WhenThreeIsSubtractedFromFive_ShouldReturnTwo(int minuend, int subtrahend, int expectedResult){
+    void testPerformIntegerSubtraction_WithCsvInput(int minuend, int subtrahend, int expectedResult){
         // Usually we don’t use System.out.println statements in Test cases.
         // In this and previous examples I used only for pedagogical reasons
         System.out.println("Running test " + minuend + " - " + subtrahend + "= " + expectedResult);
