@@ -64,7 +64,7 @@ class CalculatorTest {
     // Better disable than comment out the line with @Test since, disable still appears
     // In the test results
     // @Disabled
-    @DisplayName("4/0 - To be implemented")
+    @DisplayName("4/0")
     @Test
     void testPerformIntegerDivision_When_FourIsDividedByZero_ShouldThrowArithmeticException(){
         System.out.println("Test 4/0");
