@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-public class OrderByNameExampleTest {
+public class OrderedByNameExampleTest {
     @Test
     void testA(){
         System.out.println("Running test A");
